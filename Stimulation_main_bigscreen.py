@@ -5,36 +5,6 @@ import tkinter as tk
 from screeninfo import get_monitors
 
 
-########################## GET_PARTICIPANT'S ID FUNCTION ##########################
-### Function to create the widget of participant's ID ###
-def widget_ID():
-    # Create a frame for the widget
-    global frame_participantID
-    frame_participantID = tk.Frame(screen)
-    frame_participantID.place(relx=0.5, rely=0.5, anchor="center")
-
-    # Create a label widget
-    label_ID = tk.Label(frame_participantID, text="Participant's ID:")
-    label_ID.pack(pady=5)
-
-    # Create an entry widget for the participant to enter their ID
-    global entry
-    entry = tk.Entry(frame_participantID)
-    entry.pack(pady=5)
-
-    # Create OK button to submit the participant's ID
-    OK_button = tk.Button(frame_participantID, text="OK", command=get_participantID)
-    OK_button.pack(pady=5)
-
-
-### Function to retrieve the participant's ID ###
-def get_participantID():
-    global participant_ID
-    participant_ID = entry.get()  # get the output from the widget
-    print("Participant's ID: ", participant_ID)
-    frame_participantID.destroy()  # destroy the widget
-    instructions()  # once they click on "OK", the instructions will appear
-
 
 ########################## FUNCTION TO DISPLAY THE INSTRUCTIONS ##########################
 def instructions():
@@ -56,7 +26,7 @@ def instructions():
     #################################
     ###WRITE THE INSTRUCTIONS HERE###
     #################################
-    instructions = f"Sit comfortably and lean your head against the chair.\n When this symbol:\n +\nappears on the screen, keep your eyes on it.\n Click on the button below if you understand the instructions."
+    instructions = f"Sit comfortably. \n When this symbol:\n +\nappears on the screen, keep your eyes on it.\n Click on the button below if you understand the instructions."
     canvas.create_text(canvas_width // 2, canvas_height // 2,
                        text=instructions,
                        font=("Calibri", 20), anchor="center", justify="center", tags="inst")
@@ -181,7 +151,7 @@ def go():
 ##########################################################################
 
 ###DEFINE THE INTENSITY HERE ###
-intensity = 1500
+intensity = 1100
 
 ### ARDUINO ###
 
@@ -217,6 +187,6 @@ screen.geometry(f"{screen_width}x{screen_height}+{second_monitor.x}+{second_moni
 repetitions_countdown_cross = 6
 repetitions_stimulation = 30
 
-widget_ID()
+instructions()
 
 screen.mainloop()
