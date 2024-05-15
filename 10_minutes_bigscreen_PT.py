@@ -51,7 +51,7 @@ def start_screen():
     frame_button_start.place(anchor='center', relx=0.5, rely=0.5)
     button_font = ("Arial", 12)
     # The starting button calls the countdown function
-    button_start = tk.Button(frame_button_start, text="Carregue aqui para iniciar.", font=button_font, height=2, width=20,
+    button_start = tk.Button(frame_button_start, text="Carregue aqui para iniciar.", font=button_font, height=2, width=30,
                              command=start)
     button_start.pack()
 
