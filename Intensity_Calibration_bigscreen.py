@@ -183,6 +183,7 @@ def my_output():
     if intensity < 100 or intensity >= 4000: #if the intensity is below 100, or above 4000 stop the program
         Exclude = True # do not run any further action
         screen.destroy() #stop the program
+        selected_intensity = mean(list_wanted)
         create_excel()
         print(list_intensity, list_output, list_wanted) #print my lists
         print("The selected intensity is:", selected_intensity) #print selected intensity
@@ -217,6 +218,7 @@ def my_output():
 ########################## CHECK_FOR FUNCTION ##########################
 ###function to save the intensities that correspond to certain value on the slider###
 ###to add these intensities to a new list###
+### this function is not being used in this code###
 ###and to calculate the average value + to stop the program once there are 4 values in the list###
 def check_for(value):
     global selected_intensity
