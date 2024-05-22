@@ -183,7 +183,9 @@ def my_output():
     if intensity < 100 or intensity >= 4000: #if the intensity is below 100, or above 4000 stop the program
         Exclude = True # do not run any further action
         screen.destroy() #stop the program
+        create_excel()
         print(list_intensity, list_output, list_wanted) #print my lists
+        print("The selected intensity is:", selected_intensity) #print selected intensity
     if Exclude == False: # if the intensity is higher than 100 and lower than 4000
         if slider_value in [0, 1, 2, 3, 4, 5, 6]: #if these values selected, always increase
             inc_dec("inc") # increase
@@ -225,10 +227,9 @@ def check_for(value):
             Finish = True  # stop running if there are 4 values in the list
             selected_intensity = mean(list_wanted)# calculate the average of the values in the list
             list_action.append("end")
-            print(list_wanted)
-            print("The selected intensity is:", selected_intensity)
             screen.destroy() #stop the program
             print(list_intensity, list_output, list_wanted, list_action) # print all my lists
+            print("The selected intensity is:", selected_intensity)  # print the selected intensity
             create_excel() # create excel file
     return Finish # if the Finish = True, don't perform any further actions
 
@@ -260,6 +261,7 @@ def inc_dec(change):
         print(f"list_action:", list_action)
         print("list_change:", list_change)
         print(f"list_wanted:", list_wanted)
+        print("The selected intensity is:", selected_intensity)
     else: # if there have not been 4 changes, continue
         frame_slider.destroy() #delete the frame
         frame_button.destroy()  #delete the button
@@ -326,7 +328,7 @@ def calculate_missing_intensity(list_output, list_intensity):
         list_end_values.append(end)  # add the end values to the list
         print(f"Pair {pair_num}: {pair}")  # prints the pair_num and the corresponding pair
 
-    # create_excel(2)
+
 
     df = pd.DataFrame(all_skipped)  # create a table from the lists
     print("DataFrame:")
