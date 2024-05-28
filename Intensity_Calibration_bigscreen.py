@@ -183,10 +183,13 @@ def my_output():
     if intensity < 100 or intensity >= 4000: #if the intensity is below 100, or above 4000 stop the program
         Exclude = True # do not run any further action
         screen.destroy() #stop the program
-        selected_intensity = mean(list_wanted)
+        if len(list_wanted)>0:
+            selected_intensity = mean(list_wanted)
+            print("The selected intensity is:", selected_intensity) #print selected intensity
+        else:
+            selected_intensity=0
+        print(list_intensity, list_output, list_wanted)  # print my lists
         create_excel()
-        print(list_intensity, list_output, list_wanted) #print my lists
-        print("The selected intensity is:", selected_intensity) #print selected intensity
     if Exclude == False: # if the intensity is higher than 100 and lower than 4000
         if slider_value in [0, 1, 2, 3, 4, 5, 6]: #if these values selected, always increase
             inc_dec("inc") # increase
@@ -387,7 +390,6 @@ def create_excel():
     # Create DataFrame with NaN for missing values
     df = pd.DataFrame({key: pd.Series(value) for key, value in data.items()})
     df.to_excel(file_name, index=False)
-
 
 
 ##########################################################
